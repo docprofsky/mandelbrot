@@ -5,14 +5,7 @@ element = document.getElementById("mainCanvas");
 canvas = element.getContext('2d');
 width = element.width;
 height = element.height;
-canvas.fillStyle = '#eeeeee';
-canvas.fillRect(0, 0, width, height);
 
-// setpixel
-var setPixel = function (x,y,c) {
-    var p=canvas.createImageData(1,1);
-    
-}
 
 var p=canvas.createImageData(width, height);
 
@@ -34,10 +27,11 @@ for(var Px = 0; Px < width; Px++){
     }
     historray[iteration]++;
     //console.log(iteration);
-    var gamma = 0.1;
-    var red = Math.pow(iteration, 2.2) * gamma;
-    var green = Math.pow(iteration-23, 2.2) * gamma;
-    var blue = Math.pow(iteration-46, 2.2) * gamma;
+    var scale = 1.5;
+    var gamma = 2.2;
+    var red = Math.pow(iteration, gamma) * scale;
+    var green = Math.pow(iteration-23, gamma) * scale;
+    var blue = Math.pow(iteration-46, gamma) * scale;
     var pix = (Py*width+Px)*4;
     p.data[pix+0]=red;
     p.data[pix+1]=green;
